@@ -1,0 +1,27 @@
+<h1 class="mt-5 mb-4 header">Job Applicants</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Resume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% jobApplicants.forEach(applicant=> { %>
+    <tr>
+      <th><%= applicant.applicantId %></th>
+      <td><%= applicant.name %></td>
+      <td><%= applicant.email %></td>
+      <td scope="col"><%= applicant.contact %></td>
+      <td>
+        <a href="<%= applicant.resume %>" class="btn btn-primary">view</a>
+      </td>
+    </tr>
+
+    <% }) %>
+  </tbody>
+</table>

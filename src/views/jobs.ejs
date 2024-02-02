@@ -1,0 +1,39 @@
+<div
+  class="container d-flex flex-row gap-4 flex-wrap mt-4 justify-content-center"
+>
+  <% jobs.forEach((job)=> { %>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title" style="color: #164081"><%= job.companyName %></h5>
+      <span class="card-text"><%= job.jobCategory %></span>
+      <span class="card-text text-info-emphasis"
+        ><%= job.jobDesignation %></span
+      >
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <i class="fa-solid fa-location-dot"></i> <%= job.jobLocation %>
+      </li>
+      <li class="list-group-item">Salary: <%= job.salary %></li>
+      <li class="list-group-item">
+        <div class="d-flex gap-1 flex-wrap">
+          <% job.skillsRequired.forEach((skill) =>{ %>
+          <span
+            class="border border-2 rounded p-1"
+            style="color: #055160; border-color: #0551607c !important"
+            ><%= skill %></span
+          >
+          <% }) %>
+        </div>
+      </li>
+    </ul>
+    <div class="card-body">
+      <a
+        href="/jobs/<%= job.id %>"
+        class="card-link btn btn-outline-success w-100"
+        >View details</a
+      >
+    </div>
+  </div>
+  <% }) %>
+</div>

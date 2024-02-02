@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box !important;
+}
+
+.text-animation {
+  position: relative !important;
+  margin: 0;
+}
+
+.text {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.5rem;
+}
+
+.text_hide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+}
+
+.text_cursor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  border-left: 3px solid black;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.landing-hero {
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .landing-hero {
+    width: 90% !important;
+  }
+}

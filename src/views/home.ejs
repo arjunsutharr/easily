@@ -1,0 +1,200 @@
+<% if(locals.lastVisit) { %>
+<div class="container position-fixed">
+  <div
+    class="container alert w-50 alert-info alert-dismissible fade show"
+    role="alert"
+  >
+    Remember that feeling of landing your dream job? Relive it again with
+    us(❁´◡`❁). You last visited us on <%= lastVisit %>
+
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+</div>
+<% } %>
+<div
+  class="d-flex flex-column-reverse flex-md-row justify-content-center justify-content-md-between align-items-center gap-4"
+  style="height: 100vh"
+>
+  <div class="d-flex flex-column gap-2">
+    <div class="d-flex flex-column gap-2">
+      <h2>A comprehensive platform for reliable</h2>
+      <div class="text-animation">
+        <div class="text_hide"></div>
+        <div class="text">job opportunities and internships.</div>
+        <div class="text_cursor"></div>
+      </div>
+      <h5>Get Discovered. Get Hired.</h5>
+    </div>
+    <div>
+      <a href="/jobs" class="btn btn-primary me-2 mb-3">I'm A Job Seeker</a>
+      <% if (userEmail) { %>
+      <a href="/jobs" class="btn btn-primary me-2 mb-3">I'm A Recruiter</a>
+      <% } else {%>
+      <button
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#loginBackdrop"
+        class="btn btn-primary ms-2 mb-3"
+      >
+        I'm A Recruiter
+      </button>
+      <% } %>
+    </div>
+  </div>
+
+  <img
+    class="landing-hero"
+    src="images/landing-hero.svg"
+    alt="failed"
+    srcset=""
+  />
+</div>
+
+<!-- resgiter and login Modal -->
+
+<div
+  class="modal fade"
+  id="loginBackdrop"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+          Exprinence easily!
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3 mt-3" action="/register" method="post">
+          <div class="row mb-3">
+            <label for="name" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="enter your name"
+                required
+              />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                id="email"
+                placeholder="enter your email"
+                required
+              />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="password" class="col-sm-2 col-form-label"
+              >Password</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="enter your password"
+                required
+              />
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn btn-primary" type="submit">Regiter</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="col-12">
+          <span>Already registered?</span>
+          <button
+            class="btn btn-outline-success py-1 px-3 ms-2"
+            data-bs-target="#exampleModalToggle2"
+            data-bs-toggle="modal"
+          >
+            login
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="exampleModalToggle2"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel2"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
+          Exprinence easily
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3 mt-3" action="/login" method="post">
+          <div class="row mb-3">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                id="email"
+                placeholder="enter your email"
+                required
+              />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="password" class="col-sm-2 col-form-label"
+              >Password</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="enter your password"
+                required
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <button class="btn btn-success" type="submit">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,164 @@
+<div class="container mt-4 card w-75 mb-3">
+  <div class="card-body">
+    <h3 class="card-title text-center mb-4">
+      <span class="text-danger"><%= job.jobDesignation%></span>
+      <span class="text-success">oppertunity in</span>
+      <span class="text-success"><%= job.jobLocation%> at</span>
+      <span class="text-info"><%= job.companyName %></span>
+    </h3>
+
+    <div class="mb-1">
+      <h5 class="d-inline me-2"><%= job.companyName %></h5>
+      <% if( userEmail && userEmail === job.recruiterMail){ %>
+      <span>
+        <a
+          class="link-dark link-opacity-75 link-opacity-100-hover"
+          href="/update-job/<%= job.id %>"
+          ><i class="fa-solid fa-file-pen"></i
+        ></a>
+        <a
+          class="link-dark link-opacity-75 link-opacity-100-hover cursor-pointer"
+          style="cursor: pointer"
+          onclick="deleteJob('<%= job.id  %>')"
+        >
+          <i class="fa-solid fa-file-circle-xmark"></i>
+        </a>
+      </span>
+      <% } %>
+    </div>
+    <h6>
+      <span><%= job.jobCategory %></span>
+      <span class="text-info-emphasis"><%= job.jobDesignation %></span>
+    </h6>
+    <p><i class="fa-solid fa-location-dot"></i> <%= job.jobLocation %></p>
+    <p><i class="fa-solid fa-money-bills"></i> Pay <%= job.salary %></p>
+    <p>
+      <i class="fa-solid fa-hourglass-half"></i> Apply By <%= job.applyBy %>
+    </p>
+    <p>
+      <i class="fa-solid fa-door-open"></i> Number of openings <%=
+      job.numberOfOpenings %>
+    </p>
+
+    <% if( userEmail && userEmail === job.recruiterMail) { %>
+    <a
+      class="link-primary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+      href="/jobs/<%= job.id %>/applicants"
+    >
+      <i class="fa-solid fa-user-group mb-3"></i> Applicants <%=
+      job.applicants.length %></a
+    >
+    <% } else { %>
+    <i class="fa-solid fa-user-group mb-3"></i> Applicants <%=
+    job.applicants.length %> <% } %>
+
+    <div class="d-flex gap-1 flex-wrap">
+      <% job.skillsRequired.forEach((skill) =>{ %>
+      <span
+        class="border border-2 rounded p-1"
+        style="color: #055160; border-color: #0551607c !important"
+        ><%= skill %></span
+      >
+      <% }) %>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button
+      type="submit"
+      class="btn btn-primary mt-4"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Apply Now
+    </button>
+    <p class="mt-4 mb-0">
+      <span class="bg-success text-light p-1 rounded-2"
+        >Posted: <%= job.jobPosted %></span
+      >
+    </p>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">easily</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form
+            class="row g-3"
+            action="/apply/<%= job.id %>"
+            method="post"
+            enctype="multipart/form-data"
+            accept="application/pdf"
+          >
+            <div class="class=mb-3">
+              <label for="name" class="form-label">Full name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Mark Doe"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="name@example.com"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="number" class="form-label">Mobile Number</label>
+              <input
+                type="number"
+                class="form-control"
+                id="number"
+                name="number"
+                step="0.01"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="resumeFile" class="form-label">Resume</label>
+              <input
+                class="form-control"
+                type="file"
+                id="resumeFile"
+                name="resumeFile"
+                required
+              />
+            </div>
+            <div class="col-12">
+              <button class="btn btn-success" type="submit">Submit</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
